@@ -1,6 +1,6 @@
 package data.travel_policy
 # Approved policy rules for travel_policy
-# Generated: 2026-03-03T05:38:13.419167
+# Generated: 2026-03-03T05:40:37.123778
 # Document ID: doc_aa1be7fba1f8
 # Only approved clauses included
 

@@ -51,6 +51,46 @@ package data.travel_policy
         input.allowancecoverage == "food and fuel"
     }
 
+
+    # Rule: C6
+    # Intent: RESTRICTION
+    # Action: warn
+    # Ambiguous: False
+    allow_c6_rest := {"allow": true, "reason": "Clause C6: Restriction - YES"} if {
+        true
+    }
+
+
+    # Rule: C7
+    # Intent: APPROVAL_REQUIRED
+    # Action: warn
+    # Ambiguous: False
+    allow_c7_appr := {"allow": true, "reason": "Clause C7: Approval Required - CONDITIONAL"} if {
+        input.validationdepartments == "HR and Accounts"
+    input.approvalauthority == "Reporting Manager"
+    }
+
+
+    # Rule: C8
+    # Intent: LIMIT
+    # Action: warn
+    # Ambiguous: False
+    allow_c8_limi := {"allow": true, "reason": "Clause C8: Limit - STRICT"} if {
+        input.reimbursementcondition == "eligible amount or bill amount, whichever is LESS"
+    }
+
+
+    # Rule: C9
+    # Intent: INFORMATIONAL
+    # Action: warn
+    # Ambiguous: False
+    allow_c9_info := {"allow": true, "reason": "Clause C9: Informational - OK"} if {
+        input.cityclassificationcategories == "Metros, State Capitals/Hill Stations, District Headquarters, Other Towns"
+    input.metrocities == "Mumbai, Delhi, Kolkata"
+    input.statecapitalhillstationexamples == "Chennai, Hyderabad, Shimla"
+    input.districtheadquarterexamples == "Coimbatore, Madurai"
+    }
+
 # Default: Allow if no violations
 allow_default {
     true

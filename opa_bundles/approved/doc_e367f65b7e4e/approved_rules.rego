@@ -56,6 +56,48 @@ package data.travel_policy
     }
 
 
+    # Rule: C2
+    # Intent: LIMIT
+    # Action: enforce
+    # Ambiguous: False
+    allow_c2_limi := {"allow": true, "reason": "Clause C2: Limit - STRICT"} if {
+        input.relativefriendlodgingreimbursement == "25% of eligible amount"
+    input.twinsharingreimbursementcap == "125% of a Senior level employee's eligible amount"
+    }
+
+
+    # Rule: C3
+    # Intent: LIMIT
+    # Action: enforce
+    # Ambiguous: False
+    allow_c3_limi := {"allow": true, "reason": "Clause C3: Limit - STRICT"} if {
+        input.boardingreimbursementdetermination == "employee category (refer Annexure – 1)"
+    input.reimbursementlimit == "lesser of actual bill or eligible amount as per Annexure-1"
+    }
+
+
+    # Rule: C7
+    # Intent: LIMIT
+    # Action: enforce
+    # Ambiguous: False
+    allow_c7_limi := {"allow": true, "reason": "Clause C7: Limit - STRICT"} if {
+        input.lodginginclusions == "rent, taxes, laundry"
+    input.boardinginclusions == "food, water, refreshments, tips"
+    input.reimbursementcap == "lower of actual bill amount or Annexure-1 amount"
+    }
+
+
+    # Rule: C8
+    # Intent: INFORMATIONAL
+    # Action: enforce
+    # Ambiguous: False
+    allow_c8_info := {"allow": true, "reason": "Clause C8: Informational - OK"} if {
+        input.metrocities == "Mumbai, Delhi, Kolkata"
+    input.statecapitalhillstations == "Chennai, Hyderabad"
+    input.districtheadquarters == "Coimbatore, Madurai"
+    }
+
+
     # Rule: C9
     # Intent: CONDITIONAL_ALLOWANCE
     # Action: enforce

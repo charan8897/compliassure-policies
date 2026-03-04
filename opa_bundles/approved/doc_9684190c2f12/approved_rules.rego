@@ -52,16 +52,6 @@ package data.travel_policy
     }
 
 
-    # Rule: C7
-    # Intent: APPROVAL_REQUIRED
-    # Action: warn
-    # Ambiguous: False
-    allow_c7_appr := {"allow": true, "reason": "Clause C7: Approval Required - CONDITIONAL"} if {
-        input.validationdepartments == "HR and Accounts"
-    input.approvalauthority == "Reporting Manager"
-    }
-
-
     # Rule: C8
     # Intent: LIMIT
     # Action: warn

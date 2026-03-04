@@ -22,6 +22,42 @@ package data.travel_policy
         input.minimumoutofficeduration >= 6
     }
 
+
+    # Rule: C11
+    # Intent: RESTRICTION
+    # Action: enforce
+    # Ambiguous: False
+    allow_c11_rest := {"allow": true, "reason": "Clause C11: Restriction - YES"} if {
+        true
+    }
+
+
+    # Rule: C12
+    # Intent: INFORMATIONAL
+    # Action: enforce
+    # Ambiguous: False
+    allow_c12_info := {"allow": true, "reason": "Clause C12: Informational - OK"} if {
+        input.personneltype == "SALES PERSONNEL"
+    }
+
+
+    # Rule: C13
+    # Intent: INFORMATIONAL
+    # Action: enforce
+    # Ambiguous: False
+    allow_c13_info := {"allow": true, "reason": "Clause C13: Informational - OK"} if {
+        true
+    }
+
+
+    # Rule: C14
+    # Intent: INFORMATIONAL
+    # Action: enforce
+    # Ambiguous: False
+    allow_c14_info := {"allow": true, "reason": "Clause C14: Informational - OK"} if {
+        true
+    }
+
 # Default: Allow if no violations
 allow_default {
     true

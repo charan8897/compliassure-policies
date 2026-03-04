@@ -4,6 +4,15 @@ package data.travel_policy
 # Document ID: doc_5aaa9f115e32
 # Only approved clauses included
 
+    # Rule: C1
+    # Intent: CONDITIONAL_ALLOWANCE
+    # Action: enforce
+    # Ambiguous: False
+    allow_c1_cond := {"allow": true, "reason": "Clause C1: Conditional Allowance - CONDITIONAL"} if {
+        input.hotelnightcostthreshold == "300 USD"
+    input.bookinglocation == "New York City (NYC)"
+    input.enforcementlevel == "MUST"
+    }
 
     # Rule: C2
     # Intent: CONDITIONAL_ALLOWANCE

@@ -26,6 +26,44 @@ package data.travel_policy
     input.personalbikedailylimit == "50 kms"
     }
 
+
+    # Rule: C11
+    # Intent: INFORMATIONAL
+    # Action: enforce
+    # Ambiguous: False
+    allow_c11_info := {"allow": true, "reason": "Clause C11: Informational - OK"} if {
+        input.allowancedetailsfor == "SALES PERSONNEL"
+    input.referenceclause == "C1"
+    }
+
+
+    # Rule: C12
+    # Intent: INFORMATIONAL
+    # Action: enforce
+    # Ambiguous: False
+    allow_c12_info := {"allow": true, "reason": "Clause C12: Informational - OK"} if {
+        input.allowancetype == "Daily Allowance (Food & Fuel)"
+    input.personneltype == "Local SALES PERSONNEL"
+    }
+
+
+    # Rule: C13
+    # Intent: INFORMATIONAL
+    # Action: enforce
+    # Ambiguous: False
+    allow_c13_info := {"allow": true, "reason": "Clause C13: Informational - OK"} if {
+        true
+    }
+
+
+    # Rule: C9
+    # Intent: CONDITIONAL_ALLOWANCE
+    # Action: enforce
+    # Ambiguous: False
+    allow_c9_cond := {"allow": true, "reason": "Clause C9: Conditional Allowance - CONDITIONAL"} if {
+        input.minimumworkduration >= 6
+    }
+
 # Default: Allow if no violations
 allow_default {
     true

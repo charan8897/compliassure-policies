@@ -22,6 +22,16 @@ package data.travel_policy
         input.minimumoutofficeduration >= 6
     }
 
+
+    # Rule: C11
+    # Intent: RESTRICTION
+    # Action: enforce
+    # Ambiguous: False
+    allow_c11_rest := {"allow": true, "reason": "Clause C11: Restriction - YES"} if {
+        input.maximumdailycardistance <= 200
+    input.maximumdailybikedistance <= 50
+    }
+
 # Default: Allow if no violations
 allow_default {
     true

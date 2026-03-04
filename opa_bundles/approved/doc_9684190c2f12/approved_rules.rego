@@ -52,15 +52,6 @@ package data.travel_policy
     }
 
 
-    # Rule: C6
-    # Intent: RESTRICTION
-    # Action: warn
-    # Ambiguous: False
-    allow_c6_rest := {"allow": true, "reason": "Clause C6: Restriction - YES"} if {
-        true
-    }
-
-
     # Rule: C7
     # Intent: APPROVAL_REQUIRED
     # Action: warn

@@ -9,9 +9,8 @@ package data.travel_policy
     # Action: warn
     # Ambiguous: False
     allow_c1_cond := {"allow": true, "reason": "Clause C1: Conditional Allowance - CONDITIONAL"} if {
-        input.costpernightthreshold == "300 USD"
-    input.enforcementlevel == "MUST"
-    input.applicableto == "All users"
+        input.hotelcostthreshold == "300 USD"
+    input.location == "New York City (NYC)"
     }
 
 # Default: Allow if no violations

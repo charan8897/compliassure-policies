@@ -1,7 +1,7 @@
 package travel_policy
 
     allow_c10_cond := {"C10": true, "reason": "Clause C10: CONDITIONAL_ALLOWANCE - YES"} if {
-        input.minimumoutofficeworkduration >= 6
+        input.minimumoutofficeduration >= 6
     }
 
     allow_c11_limi := {"C11": true, "reason": "Clause C11: LIMIT - YES"} if {
@@ -17,17 +17,15 @@ package travel_policy
     }
 
     allow_c12_info := {"C12": true, "reason": "Clause C12: INFORMATIONAL - YES"} if {
-        input.allowancetype == "Lodging & Boarding Allowance"
-        input.personneltype == "SALES PERSONNEL"
+        true
     }
 
     allow_c13_info := {"C13": true, "reason": "Clause C13: INFORMATIONAL - YES"} if {
-        input.allowancetype == "Food & Fuel"
-        input.personneltype == "Local SALES PERSONNEL"
+        true
     }
 
     allow_c14_info := {"C14": true, "reason": "Clause C14: INFORMATIONAL - YES"} if {
-        input.policyeffectivedate == "April 1st, 2014"
+        true
     }
 
     allow_c1_rest := {"C1": true, "reason": "Clause C1: RESTRICTION - YES"} if {
@@ -46,8 +44,9 @@ package travel_policy
     }
 
     allow_c3_limi := {"C3": true, "reason": "Clause C3: LIMIT - YES"} if {
-        input.reimbursementdeterminationfactor == "employee category"
-        input.reimbursementbasis == "lower of eligible amount or bill amount"
+        input.reimbursementdetermination == "employee category"
+        input.reimbursementbasis == "eligible amount or bill amount (lesser of)"
+        input.referenceclause == "C1"
     }
 
     allow_c4_appr := {"C4": true, "reason": "Clause C4: APPROVAL_REQUIRED - YES"} if {
@@ -68,16 +67,17 @@ package travel_policy
     }
 
     allow_c7_rest := {"C7": true, "reason": "Clause C7: RESTRICTION - YES"} if {
-        input.reimbursementratedetails == "Annexure – 2"
-        input.fieldworkallowancedetails == "Annexure – 3"
+        input.validationdepartments == "HR and Accounts"
+        input.referenceannexurecityclassification == "Annexure 2"
+        input.referenceannexurefieldworkallowance == "Annexure 3"
     }
 
     allow_c8_limi := {"C8": true, "reason": "Clause C8: LIMIT - YES"} if {
-        input.reimbursementcondition == "lesser of eligible amount or bill amount"
+        true
     }
 
     allow_c9_info := {"C9": true, "reason": "Clause C9: INFORMATIONAL - YES"} if {
-        input.metrocities == "Mumbai, Delhi, Kolkata"
-        input.statecapitalhillstations == "Chennai, Hyderabad"
-        input.districtheadquarters == "Coimbatore, Madurai"
+        input.cityclassificationmetros == "Mumbai, Delhi, Kolkata"
+        input.cityclassificationstatecapitalshillstations == "Chennai, Hyderabad, Shimla"
+        input.cityclassificationdistrictheadquarters == "Coimbatore, Madurai"
     }

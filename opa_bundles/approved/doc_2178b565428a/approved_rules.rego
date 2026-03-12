@@ -9,7 +9,7 @@ package data.travel_policy
     # Action: warn
     # Ambiguous: False
     allow_c2_advi := {"allow": true, "reason": "Clause C2: Advisory - CONDITIONAL"} if {
-        input.origincity == "London"
+        input.origincity == "alabama"
     input.destinationcity == "Paris"
     input.recommendedtransportationmode == "train"
     }

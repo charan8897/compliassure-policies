@@ -15,7 +15,9 @@ package travel_policy
     }
 
     allow_c11_rest := {"C11": true, "reason": "Clause C11: RESTRICTION - YES"} if {
-        true
+        input.personalcarmaximumdailydistance == "200 km"
+        input.personalbikemaximumdailydistance == "50 km"
+        input.grouptravelminimumpassengers == "3"
     }
 
     allow_c12_advi := {"C12": true, "reason": "Clause C12: ADVISORY - YES"} if {
@@ -80,7 +82,8 @@ package travel_policy
     }
 
     allow_c1_rest := {"C1": true, "reason": "Clause C1: RESTRICTION - YES"} if {
-        true
+        input.policyid == "HR/Pol/02/2014"
+        input.companyname == "NAGA LIMITED"
     }
 
     allow_c20_cond := {"C20": true, "reason": "Clause C20: CONDITIONAL_ALLOWANCE - YES"} if {

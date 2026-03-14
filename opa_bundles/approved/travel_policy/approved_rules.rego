@@ -42,7 +42,7 @@ package travel_policy
     # Action: enforce
     # Ambiguous: False
 
-    allow_c10_appr := {"C10": true, "reason": "Clause C10: APPROVAL_REQUIRED - YES"} if {
+    allow_c10_appr := {"allow": true, "reason": "Clause C10: Approval Required - CONDITIONAL"} if {
         true
     }
 
@@ -50,7 +50,7 @@ package travel_policy
         input.minimumoutofficeduration >= 6
     }
 
-    allow_c11_advi := {"C11": true, "reason": "Clause C11: ADVISORY - YES"} if {
+    allow_c11_advi := {"allow": true, "reason": "Clause C11: Advisory - CONDITIONAL"} if {
         input.reservationleadtime == "2 weeks"
     }
 
@@ -65,11 +65,11 @@ package travel_policy
         input.annexurereference == "5"
     }
 
-    allow_c12_rest := {"C12": true, "reason": "Clause C12: RESTRICTION - YES"} if {
+    allow_c12_rest := {"allow": true, "reason": "Clause C12: Restriction - YES"} if {
         true
     }
 
-    allow_c13_advi := {"C13": true, "reason": "Clause C13: ADVISORY - YES"} if {
+    allow_c13_advi := {"allow": true, "reason": "Clause C13: Advisory - CONDITIONAL"} if {
         true
     }
 
@@ -78,44 +78,43 @@ package travel_policy
         input.annexurereference == "6"
     }
 
-    allow_c14_info := {"C14": true, "reason": "Clause C14: INFORMATIONAL - YES"} if {
-        input.policyeffectivedate == "April 1st, 2014"
-    }
-
-    allow_c15_info := {"C15": true, "reason": "Clause C15: INFORMATIONAL - YES"} if {
+    allow_c14_info := {"allow": true, "reason": "Clause C14: Informational - OK"} if {
         true
     }
 
-    allow_c16_info := {"C16": true, "reason": "Clause C16: INFORMATIONAL - YES"} if {
+    allow_c15_info := {"allow": true, "reason": "Clause C15: Informational - OK"} if {
+        true
+    }
+
+    allow_c16_info := {"allow": true, "reason": "Clause C16: Informational - OK"} if {
         input.passportvalidity == "6 months"
-        input.sourcedocument == "STANDARDS FOR TRAVEL ARRANGEMENTS"
-        input.sourceversion == "1.9"
+    input.sourcedocument == "STANDARDS FOR TRAVEL ARRANGEMENTS"
+    input.sourceversion == 1.9
     }
 
-    allow_c17_info := {"C17": true, "reason": "Clause C17: INFORMATIONAL - YES"} if {
+    allow_c17_info := {"allow": true, "reason": "Clause C17: Informational - OK"} if {
         true
     }
 
-    allow_c18_info := {"C18": true, "reason": "Clause C18: INFORMATIONAL - YES"} if {
+    allow_c18_info := {"allow": true, "reason": "Clause C18: Informational - OK"} if {
         true
     }
 
-    allow_c19_info := {"C19": true, "reason": "Clause C19: INFORMATIONAL - YES"} if {
+    allow_c19_info := {"allow": true, "reason": "Clause C19: Informational - OK"} if {
         true
     }
 
-    allow_c1_rest := {"C1": true, "reason": "Clause C1: RESTRICTION - YES"} if {
-        input.policyid == "HR/Pol/02/2014"
-        input.companyname == "NAGA LIMITED"
-    }
-
-    allow_c20_info := {"C20": true, "reason": "Clause C20: INFORMATIONAL - YES"} if {
+    allow_c1_rest := {"allow": true, "reason": "Clause C1: Restriction - YES"} if {
         true
     }
 
-    allow_c2_info := {"C2": true, "reason": "Clause C2: INFORMATIONAL - YES"} if {
+    allow_c20_info := {"allow": true, "reason": "Clause C20: Informational - OK"} if {
+        true
+    }
+
+    allow_c2_info := {"allow": true, "reason": "Clause C2: Informational - OK"} if {
         input.policyowner == "EVP, Operations"
-        input.policymanager == "Global Commercial Lead, Business Travel (Procurement)"
+    input.policymanager == "Global Commercial Lead, Business Travel (Procurement)"
     }
 
     allow_c2_limi := {"C2": true, "reason": "Clause C2: LIMIT - YES"} if {
@@ -123,10 +122,10 @@ package travel_policy
         input.twinsharingreimbursementcap == "125% of a Senior level employee's eligible amount"
     }
 
-    allow_c3_info := {"C3": true, "reason": "Clause C3: INFORMATIONAL - YES"} if {
+    allow_c3_info := {"allow": true, "reason": "Clause C3: Informational - OK"} if {
         input.compliancelevels == "MUST, EXPECTED, SHOULD"
-        input.reportingfrequency == "periodically"
-        input.reportingrecipient == "SET"
+    input.reportingfrequency == "periodically"
+    input.reportingrecipient == "SET"
     }
 
     allow_c3_limi := {"C3": true, "reason": "Clause C3: LIMIT - YES"} if {
@@ -138,16 +137,16 @@ package travel_policy
         input.approvalauthority == "Reporting Manager"
     }
 
-    allow_c4_rest := {"C4": true, "reason": "Clause C4: RESTRICTION - YES"} if {
+    allow_c4_rest := {"allow": true, "reason": "Clause C4: Restriction - YES"} if {
         input.auditfrequency == "regularly"
-        input.disciplinaryaction == "up to and including dismissal"
+    input.disciplinaryaction == "up to and including dismissal"
     }
 
-    allow_c5_rest := {"C5": true, "reason": "Clause C5: RESTRICTION - YES"} if {
-        input.traveladvancesettlementdeadline == "2 days"
+    allow_c5_rest := {"allow": true, "reason": "Clause C5: Restriction - YES"} if {
+        true
     }
 
-    allow_c6_appr := {"C6": true, "reason": "Clause C6: APPROVAL_REQUIRED - YES"} if {
+    allow_c6_appr := {"allow": true, "reason": "Clause C6: Approval Required - CONDITIONAL"} if {
         true
     }
 
@@ -160,13 +159,11 @@ package travel_policy
     input.approvalauthority == "Reporting Manager"
     }
 
-    allow_c7_rest := {"C7": true, "reason": "Clause C7: RESTRICTION - YES"} if {
-        input.validationdepartments == "HR and Accounts"
-        input.referenceannexurecityclassification == "Annexure 2"
-        input.referenceannexurefieldworkallowance == "Annexure 3"
+    allow_c7_rest := {"allow": true, "reason": "Clause C7: Restriction - YES"} if {
+        true
     }
 
-    allow_c8_advi := {"C8": true, "reason": "Clause C8: ADVISORY - YES"} if {
+    allow_c8_advi := {"allow": true, "reason": "Clause C8: Advisory - CONDITIONAL"} if {
         true
     }
 
@@ -174,7 +171,7 @@ package travel_policy
         true
     }
 
-    allow_c9_advi := {"C9": true, "reason": "Clause C9: ADVISORY - YES"} if {
+    allow_c9_advi := {"allow": true, "reason": "Clause C9: Advisory - CONDITIONAL"} if {
         true
     }
 

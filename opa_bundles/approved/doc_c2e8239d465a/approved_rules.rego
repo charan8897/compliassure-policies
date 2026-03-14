@@ -14,6 +14,16 @@ package data.travel_policy
     input.travelscope == "international destinations"
     }
 
+
+    # Rule: C2
+    # Intent: ADVISORY
+    # Action: warn
+    # Ambiguous: False
+    allow_c2_gen := {"allow": true, "reason": "Clause C2: ADVISORY - EDITED"} if {
+        input.travelroute == "London and India"
+    input.transportrecommendation == "train travel"
+    }
+
 # Default: Allow if no violations
 allow_default {
     true

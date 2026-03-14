@@ -4,13 +4,14 @@ package data.travel_policy
 # All approved clauses included
 
 
-    # Rule: C2
-    # Intent: ADVISORY
+    # Rule: C1
+    # Intent: CONDITIONAL_ALLOWANCE
     # Action: warn
     # Ambiguous: False
-    allow_c2_gen := {"allow": true, "reason": "Clause C2: ADVISORY - EDITED"} if {
-        input.travelroute == "London and newyork"
-    input.transportrecommendation == "train travel"
+    allow_c1_cond := {"allow": true, "reason": "Clause C1: Conditional Allowance - CONDITIONAL"} if {
+        input.travelclassallowance == "Business class"
+    input.minimumtravelduration >= 6
+    input.travelscope == "international destinations"
     }
 
 # Default: Allow if no violations

@@ -46,7 +46,7 @@ package travel_policy
         true
     }
 
-    allow_c10_cond := {"allow": true, "reason": "Clause C10: Conditional Allowance - CONDITIONAL"} if {
+    allow_c10_cond := {"C10": true, "reason": "Clause C10: CONDITIONAL_ALLOWANCE - YES"} if {
         input.minimumoutofficeduration >= 6
     }
 
@@ -54,15 +54,15 @@ package travel_policy
         input.reservationleadtime == "2 weeks"
     }
 
-    allow_c11_rest := {"allow": true, "reason": "Clause C11: Restriction - YES"} if {
+    allow_c11_rest := {"C11": true, "reason": "Clause C11: RESTRICTION - YES"} if {
         input.personalcarmaximumdailydistance == "200 km"
-    input.bikemaximumdailydistance == "50 km"
-    input.grouptravelminimumpassengers == 3
+        input.bikemaximumdailydistance == "50 km"
+        input.grouptravelminimumpassengers == "3"
     }
 
-    allow_c12_info := {"allow": true, "reason": "Clause C12: Informational - OK"} if {
+    allow_c12_info := {"C12": true, "reason": "Clause C12: INFORMATIONAL - YES"} if {
         input.personneltype == "SALES PERSONNEL"
-    input.annexurereference == 5
+        input.annexurereference == "5"
     }
 
     allow_c12_rest := {"C12": true, "reason": "Clause C12: RESTRICTION - YES"} if {
@@ -73,13 +73,13 @@ package travel_policy
         true
     }
 
-    allow_c13_info := {"allow": true, "reason": "Clause C13: Informational - OK"} if {
+    allow_c13_info := {"C13": true, "reason": "Clause C13: INFORMATIONAL - YES"} if {
         input.allowancetype == "Daily Allowance (Local Sales)"
-    input.annexurereference == 6
+        input.annexurereference == "6"
     }
 
     allow_c14_info := {"C14": true, "reason": "Clause C14: INFORMATIONAL - YES"} if {
-        true
+        input.policyeffectivedate == "April 1st, 2014"
     }
 
     allow_c15_info := {"C15": true, "reason": "Clause C15: INFORMATIONAL - YES"} if {
@@ -105,7 +105,8 @@ package travel_policy
     }
 
     allow_c1_rest := {"C1": true, "reason": "Clause C1: RESTRICTION - YES"} if {
-        true
+        input.policyid == "HR/Pol/02/2014"
+        input.companyname == "NAGA LIMITED"
     }
 
     allow_c20_info := {"C20": true, "reason": "Clause C20: INFORMATIONAL - YES"} if {
@@ -117,9 +118,9 @@ package travel_policy
         input.policymanager == "Global Commercial Lead, Business Travel (Procurement)"
     }
 
-    allow_c2_limi := {"allow": true, "reason": "Clause C2: Limit - STRICT"} if {
+    allow_c2_limi := {"C2": true, "reason": "Clause C2: LIMIT - YES"} if {
         input.relativefriendlodgingreimbursement == "25% of eligible amount"
-    input.twinsharingreimbursementcap == "125% of a Senior level employee's eligible amount"
+        input.twinsharingreimbursementcap == "125% of a Senior level employee's eligible amount"
     }
 
     allow_c3_info := {"C3": true, "reason": "Clause C3: INFORMATIONAL - YES"} if {
@@ -128,12 +129,12 @@ package travel_policy
         input.reportingrecipient == "SET"
     }
 
-    allow_c3_limi := {"allow": true, "reason": "Clause C3: Limit - STRICT"} if {
+    allow_c3_limi := {"C3": true, "reason": "Clause C3: LIMIT - YES"} if {
         input.reimbursementdeterminationfactor == "employee category"
-    input.reimbursementbasis == "lower of eligible amount or bill amount"
+        input.reimbursementbasis == "lower of eligible amount or bill amount"
     }
 
-    allow_c4_appr := {"allow": true, "reason": "Clause C4: Approval Required - CONDITIONAL"} if {
+    allow_c4_appr := {"C4": true, "reason": "Clause C4: APPROVAL_REQUIRED - YES"} if {
         input.approvalauthority == "Reporting Manager"
     }
 
@@ -143,14 +144,14 @@ package travel_policy
     }
 
     allow_c5_rest := {"C5": true, "reason": "Clause C5: RESTRICTION - YES"} if {
-        true
+        input.traveladvancesettlementdeadline == "2 days"
     }
 
     allow_c6_appr := {"C6": true, "reason": "Clause C6: APPROVAL_REQUIRED - YES"} if {
         true
     }
 
-    allow_c6_rest := {"allow": true, "reason": "Clause C6: Restriction - YES"} if {
+    allow_c6_rest := {"C6": true, "reason": "Clause C6: RESTRICTION - YES"} if {
         true
     }
 
@@ -160,14 +161,16 @@ package travel_policy
     }
 
     allow_c7_rest := {"C7": true, "reason": "Clause C7: RESTRICTION - YES"} if {
-        true
+        input.validationdepartments == "HR and Accounts"
+        input.referenceannexurecityclassification == "Annexure 2"
+        input.referenceannexurefieldworkallowance == "Annexure 3"
     }
 
     allow_c8_advi := {"C8": true, "reason": "Clause C8: ADVISORY - YES"} if {
         true
     }
 
-    allow_c8_limi := {"allow": true, "reason": "Clause C8: Limit - STRICT"} if {
+    allow_c8_limi := {"C8": true, "reason": "Clause C8: LIMIT - YES"} if {
         true
     }
 
@@ -175,9 +178,9 @@ package travel_policy
         true
     }
 
-    allow_c9_info := {"allow": true, "reason": "Clause C9: Informational - OK"} if {
+    allow_c9_info := {"C9": true, "reason": "Clause C9: INFORMATIONAL - YES"} if {
         input.cityclassificationmetros == "Mumbai, Delhi, Kolkata"
-    input.cityclassificationstatecapitalshillstations == "Chennai, Hyderabad, Shimla"
-    input.cityclassificationdistrictheadquarters == "Coimbatore, Madurai"
-    input.cityclassificationothertowns == "Other Towns"
+        input.cityclassificationstatecapitalshillstations == "Chennai, Hyderabad, Shimla"
+        input.cityclassificationdistrictheadquarters == "Coimbatore, Madurai"
+        input.cityclassificationothertowns == "Other Towns"
     }

@@ -9,9 +9,10 @@ package data.travel_policy
     # Action: warn
     # Ambiguous: False
     allow_c1_cond := {"allow": true, "reason": "Clause C1: Conditional Allowance - CONDITIONAL"} if {
-        input.travelclassallowance == "Business class"
+        input.travelclasseligibility == "Senior Managers"
     input.internationaltraveldurationthreshold == "6 hours"
-    input.applicableroles == "Senior Managers"
+    input.permittedtravelclass == "Business class"
+    input.applicableroles == "Senior Manager roles"
     }
 
 
@@ -19,10 +20,18 @@ package data.travel_policy
     # Intent: ADVISORY
     # Action: warn
     # Ambiguous: False
-    allow_c2_gen := {"allow": true, "reason": "Clause C2: ADVISORY - EDITED"} if {
-        input.origincity == "London"
-    input.destinationcity == "Paris"
-    input.recommendedtransportmode == "on top of rayquaza pokemon"
+    allow_c2_advi := {"allow": true, "reason": "Clause C2: Advisory - CONDITIONAL"} if {
+        input.travelroute == "London and Paris"
+    input.suggestedmodeoftransport == "train"
+    }
+
+
+    # Rule: C3
+    # Intent: CONDITIONAL_ALLOWANCE
+    # Action: warn
+    # Ambiguous: False
+    allow_c3_cond := {"allow": true, "reason": "Clause C3: Conditional Allowance - CONDITIONAL"} if {
+        true
     }
 
 # Default: Allow if no violations

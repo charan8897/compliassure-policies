@@ -19,8 +19,8 @@ package data.travel_policy
     # Intent: ADVISORY
     # Action: warn
     # Ambiguous: False
-    allow_c2_advi := {"allow": true, "reason": "Clause C2: Advisory - CONDITIONAL"} if {
-        input.routecities == "London, Paris"
+    allow_c2_gen := {"allow": true, "reason": "Clause C2: ADVISORY - EDITED"} if {
+        input.routecities == "London, england"
     }
 
 # Default: Allow if no violations

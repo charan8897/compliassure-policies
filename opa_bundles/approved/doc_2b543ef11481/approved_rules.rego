@@ -23,6 +23,17 @@ package data.travel_policy
         input.routecities == "London, england"
     }
 
+
+    # Rule: C3
+    # Intent: RESTRICTION
+    # Action: warn
+    # Ambiguous: False
+    allow_c3_rest := {"allow": true, "reason": "Clause C3: Restriction - YES"} if {
+        input.maximumhotelcostpernight <= 300
+    input.cityrestriction == "New York City (NYC)"
+    input.approvaldepartment == "Finance Department"
+    }
+
 # Default: Allow if no violations
 allow_default {
     true

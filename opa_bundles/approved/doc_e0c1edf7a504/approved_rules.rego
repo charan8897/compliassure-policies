@@ -19,10 +19,10 @@ package data.travel_policy
     # Intent: ADVISORY
     # Action: enforce
     # Ambiguous: False
-    allow_c2_advi := {"allow": true, "reason": "Clause C2: Advisory - CONDITIONAL"} if {
+    allow_c2_gen := {"allow": true, "reason": "Clause C2: ADVISORY - EDITED"} if {
         input.origincity == "London"
     input.destinationcity == "Paris"
-    input.recommendedtravelmode == "train"
+    input.recommendedtravelmode == "Airplane"
     }
 
 # Default: Allow if no violations

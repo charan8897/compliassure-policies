@@ -14,6 +14,17 @@ package data.travel_policy
     input.applicableroles == "Senior Managers"
     }
 
+
+    # Rule: C2
+    # Intent: ADVISORY
+    # Action: warn
+    # Ambiguous: False
+    allow_c2_advi := {"allow": true, "reason": "Clause C2: Advisory - CONDITIONAL"} if {
+        input.origincity == "London"
+    input.destinationcity == "Paris"
+    input.recommendedtransportmode == "train"
+    }
+
 # Default: Allow if no violations
 allow_default {
     true

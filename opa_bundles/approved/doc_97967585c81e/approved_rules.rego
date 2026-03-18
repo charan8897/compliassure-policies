@@ -8,30 +8,10 @@ package data.travel_policy
     # Intent: CONDITIONAL_ALLOWANCE
     # Action: warn
     # Ambiguous: False
-    allowed_hotelnightcostthreshold := ["300"]
-    allowed_bookinglocation := ["New York City (NYC)"]
-    allowed_enforcementlevel := ["MUST"]
-
-    allow_c1_cond := {"allow": true, "reason": "Clause C1: Conditional Allowance - CONDITIONAL"} if {
-        allowed_hotelnightcostthreshold[_] == input.hotelnightcostthreshold
-    allowed_bookinglocation[_] == input.bookinglocation
-    allowed_enforcementlevel[_] == input.enforcementlevel
-    }
-
-
-    # Rule: C2
-    # Intent: CONDITIONAL_ALLOWANCE
-    # Action: warn
-    # Ambiguous: False
-    allowed_travelclass := ["Business Class"]
-    allowed_employeerole := ["Senior Manager"]
-    allowed_enforcementlevel := ["MAY"]
-
-    allow_c2_cond := {"allow": true, "reason": "Clause C2: Conditional Allowance - CONDITIONAL"} if {
-        allowed_travelclass[_] == input.travelclass
-    input.minimumtravelduration >= 6
-    allowed_employeerole[_] == input.employeerole
-    allowed_enforcementlevel[_] == input.enforcementlevel
+    allow_c1_gen := {"allow": true, "reason": "Clause C1: CONDITIONAL_ALLOWANCE - EDITED"} if {
+        input.hotelnightcostthreshold == "500 USD"
+    input.bookinglocation == "New York City (NYC)"
+    input.enforcementlevel == "MUST"
     }
 
 # Default: Allow if no violations

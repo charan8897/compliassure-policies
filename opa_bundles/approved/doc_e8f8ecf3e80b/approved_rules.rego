@@ -8,12 +8,9 @@ package data.travel_policy
     # Intent: CONDITIONAL_ALLOWANCE
     # Action: warn
     # Ambiguous: False
-    allowed_travelclassforinternationaltravel := ["Business class"]
-    allowed_internationaltraveldurationthreshold := ["6"]
-
-    allow_c1_cond := {"allow": true, "reason": "Clause C1: Conditional Allowance - CONDITIONAL"} if {
-        allowed_travelclassforinternationaltravel[_] == input.travelclassforinternationaltravel
-    allowed_internationaltraveldurationthreshold[_] == input.internationaltraveldurationthreshold
+    allow_c1_gen := {"allow": true, "reason": "Clause C1: CONDITIONAL_ALLOWANCE - EDITED"} if {
+        input.travelclassforinternationaltravel == "Economic class"
+    input.internationaltraveldurationthreshold == "8 hours"
     }
 
 # Default: Allow if no violations

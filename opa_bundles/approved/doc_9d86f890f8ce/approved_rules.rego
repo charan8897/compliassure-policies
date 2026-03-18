@@ -8,12 +8,26 @@ package data.travel_policy
     # Intent: CONDITIONAL_ALLOWANCE
     # Action: warn
     # Ambiguous: False
-    allowed_travelclassforinternationaltravel := ["Business class"]
-    allowed_internationaltraveldurationthreshold := ["6"]
+    allowed_travelclassallowance := ["Business class"]
+    allowed_travelscope := ["international destinations"]
 
     allow_c1_cond := {"allow": true, "reason": "Clause C1: Conditional Allowance - CONDITIONAL"} if {
-        allowed_travelclassforinternationaltravel[_] == input.travelclassforinternationaltravel
-    allowed_internationaltraveldurationthreshold[_] == input.internationaltraveldurationthreshold
+        allowed_travelclassallowance[_] == input.travelclassallowance
+    input.minimumtravelduration >= 6
+    allowed_travelscope[_] == input.travelscope
+    }
+
+
+    # Rule: C2
+    # Intent: ADVISORY
+    # Action: warn
+    # Ambiguous: False
+    allowed_travelroute := ["London and Paris"]
+    allowed_transportrecommendation := ["train travel"]
+
+    allow_c2_advi := {"allow": true, "reason": "Clause C2: Advisory - CONDITIONAL"} if {
+        allowed_travelroute[_] == input.travelroute
+    allowed_transportrecommendation[_] == input.transportrecommendation
     }
 
 # Default: Allow if no violations

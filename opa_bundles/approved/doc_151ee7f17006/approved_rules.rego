@@ -22,12 +22,9 @@ package data.travel_policy
     # Intent: ADVISORY
     # Action: warn
     # Ambiguous: False
-    allowed_travelroute := ["London and Paris"]
-    allowed_transportrecommendation := ["train travel"]
-
-    allow_c2_advi := {"allow": true, "reason": "Clause C2: Advisory - CONDITIONAL"} if {
-        allowed_travelroute[_] == input.travelroute
-    allowed_transportrecommendation[_] == input.transportrecommendation
+    allow_c2_gen := {"allow": true, "reason": "Clause C2: ADVISORY - EDITED"} if {
+        input.travelroute == "London and nevada"
+    input.transportrecommendation == "Flight"
     }
 
 # Default: Allow if no violations

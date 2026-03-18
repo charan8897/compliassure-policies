@@ -8,13 +8,27 @@ package data.travel_policy
     # Intent: ADVISORY
     # Action: warn
     # Ambiguous: False
-    allowed_travelclass := ["Business class"]
-    allowed_traveldurationmeasurement := ["departure to arrival"]
+    allowed_travelclassforseniormanagers := ["Business class"]
+    allowed_applicableroles := ["Senior Manager"]
 
     allow_c1_advi := {"allow": true, "reason": "Clause C1: Advisory - YES"} if {
-        allowed_travelclass[_] == input.travelclass
-    input.minimumtravelduration >= 6
-    allowed_traveldurationmeasurement[_] == input.traveldurationmeasurement
+        allowed_travelclassforseniormanagers[_] == input.travelclassforseniormanagers
+    input.minimumflightdurationforbusinessclass >= 6
+    allowed_applicableroles[_] == input.applicableroles
+    }
+
+
+    # Rule: C2
+    # Intent: RESTRICTION
+    # Action: warn
+    # Ambiguous: False
+    allowed_hotelcity := ["New York City"]
+    allowed_hotelcitycode := ["NYC"]
+
+    allow_c2_rest := {"allow": true, "reason": "Clause C2: Restriction - YES"} if {
+        allowed_hotelcity[_] == input.hotelcity
+    allowed_hotelcitycode[_] == input.hotelcitycode
+    input.maximumhotelcostpernight <= 300
     }
 
 # Default: Allow if no violations

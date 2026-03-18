@@ -22,13 +22,10 @@ package data.travel_policy
     # Intent: RESTRICTION
     # Action: warn
     # Ambiguous: False
-    allowed_hotelcity := ["New York City"]
-    allowed_hotelcitycode := ["NYC"]
-
-    allow_c2_rest := {"allow": true, "reason": "Clause C2: Restriction - YES"} if {
-        allowed_hotelcity[_] == input.hotelcity
-    allowed_hotelcitycode[_] == input.hotelcitycode
-    input.maximumhotelcostpernight <= 300
+    allow_c2_gen := {"allow": true, "reason": "Clause C2: RESTRICTION - EDITED"} if {
+        input.hotelcity == "New jersey"
+    input.hotelcitycode == "NJC"
+    input.maximumhotelcostpernight <= 650 USD
     }
 
 # Default: Allow if no violations

@@ -4,19 +4,41 @@ package data.travel_policy
 # All approved clauses included
 
 
-    # Rule: C2
-    # Intent: CONDITIONAL_ALLOWANCE
+    # Rule: C1
+    # Intent: RESTRICTION
     # Action: warn
     # Ambiguous: False
-    allowed_travelclassauthorization := ["Business Class"]
-    allowed_authorizedroles := ["Senior Managers"]
-    allowed_traveltype := ["international travel"]
+    allowed_enforcementlevel := ["MUST"]
+    allowed_applicableto := ["All employees"]
+    allowed_transportationmode := ["train"]
+    allowed_origincities := ["London, Paris"]
+    allowed_destinationcities := ["London, Paris"]
 
-    allow_c2_cond := {"allow": true, "reason": "Clause C2: Conditional Allowance - CONDITIONAL"} if {
-        allowed_travelclassauthorization[_] == input.travelclassauthorization
-    allowed_authorizedroles[_] == input.authorizedroles
-    allowed_traveltype[_] == input.traveltype
-    input.minimumtravelduration >= 6
+    allow_c1_rest := {"allow": true, "reason": "Clause C1: Restriction - YES"} if {
+        allowed_enforcementlevel[_] == input.enforcementlevel
+    allowed_applicableto[_] == input.applicableto
+    allowed_transportationmode[_] == input.transportationmode
+    allowed_origincities[_] == input.origincities
+    allowed_destinationcities[_] == input.destinationcities
+    }
+
+
+    # Rule: C3
+    # Intent: RESTRICTION
+    # Action: warn
+    # Ambiguous: False
+    allowed_enforcementlevel := ["MUST"]
+    allowed_applicableto := ["All employees"]
+    allowed_transportationmethod := ["train travel"]
+    allowed_origincities := ["London, Paris"]
+    allowed_destinationcities := ["London, Paris"]
+
+    allow_c3_rest := {"allow": true, "reason": "Clause C3: Restriction - YES"} if {
+        allowed_enforcementlevel[_] == input.enforcementlevel
+    allowed_applicableto[_] == input.applicableto
+    allowed_transportationmethod[_] == input.transportationmethod
+    allowed_origincities[_] == input.origincities
+    allowed_destinationcities[_] == input.destinationcities
     }
 
 # Default: Allow if no violations

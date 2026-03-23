@@ -27,6 +27,18 @@ package data.travel_policy
     allow_c3_limi := {"allow": true, "reason": "Clause C3: Limit - STRICT"} if {
         allowed_hotelbookingcity[_] == input.hotelbookingcity
     input.maximumhotelbookinglimitpernight <= 300
+    # Rule: C2
+    # Intent: ADVISORY
+    # Action: warn
+    # Ambiguous: False
+    allowed_route := ["London and Paris"]
+    allowed_preferredtravelmethod := ["train"]
+    allowed_source := ["2"]
+
+    allow_c2_advi := {"allow": true, "reason": "Clause C2: Advisory - CONDITIONAL"} if {
+        allowed_route[_] == input.route
+    allowed_preferredtravelmethod[_] == input.preferredtravelmethod
+    allowed_source[_] == input.source
     }
 
 # Default: Allow if no violations

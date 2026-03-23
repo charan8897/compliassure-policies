@@ -19,6 +19,16 @@ package data.travel_policy
     }
 
 
+    # Rule: C4
+    # Intent: CONDITIONAL_ALLOWANCE
+    # Action: warn
+    # Ambiguous: False
+    allowed_bookingtimeconstraint := ["48"]
+    allowed_justificationrequirement := ["REQUIRED"]
+
+    allow_c4_cond := {"allow": true, "reason": "Clause C4: Conditional Allowance - CONDITIONAL"} if {
+        allowed_bookingtimeconstraint[_] == input.bookingtimeconstraint
+    allowed_justificationrequirement[_] == input.justificationrequirement
     # Rule: C3
     # Intent: CONDITIONAL_ALLOWANCE
     # Action: enforce

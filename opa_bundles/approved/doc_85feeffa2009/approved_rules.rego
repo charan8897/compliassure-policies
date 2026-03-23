@@ -29,6 +29,20 @@ package data.travel_policy
     allow_c4_cond := {"allow": true, "reason": "Clause C4: Conditional Allowance - CONDITIONAL"} if {
         allowed_bookingtimeconstraint[_] == input.bookingtimeconstraint
     allowed_justificationrequirement[_] == input.justificationrequirement
+    # Rule: C3
+    # Intent: CONDITIONAL_ALLOWANCE
+    # Action: enforce
+    # Ambiguous: False
+    allowed_hotelcostlimit := ["300"]
+    allowed_costlimitunit := ["per night"]
+    allowed_applicablecity := ["New York City"]
+    allowed_enforcementlevel := ["MUST"]
+
+    allow_c3_cond := {"allow": true, "reason": "Clause C3: Conditional Allowance - CONDITIONAL"} if {
+        allowed_hotelcostlimit[_] == input.hotelcostlimit
+    allowed_costlimitunit[_] == input.costlimitunit
+    allowed_applicablecity[_] == input.applicablecity
+    allowed_enforcementlevel[_] == input.enforcementlevel
     }
 
 # Default: Allow if no violations

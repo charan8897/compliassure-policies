@@ -8,12 +8,25 @@ package data.travel_policy
     # Intent: CONDITIONAL_ALLOWANCE
     # Action: warn
     # Ambiguous: False
-    allowed_travelclassforinternationaltravel := ["Business class"]
-    allowed_internationaltraveldurationthreshold := ["6"]
+    allowed_travelclassforseniormanagers := ["Business class"]
+    allowed_travelscope := ["international flights"]
 
     allow_c1_cond := {"allow": true, "reason": "Clause C1: Conditional Allowance - CONDITIONAL"} if {
-        allowed_travelclassforinternationaltravel[_] == input.travelclassforinternationaltravel
-    allowed_internationaltraveldurationthreshold[_] == input.internationaltraveldurationthreshold
+        allowed_travelclassforseniormanagers[_] == input.travelclassforseniormanagers
+    input.minimumflightdurationforbusinessclass >= 6
+    allowed_travelscope[_] == input.travelscope
+    }
+
+
+    # Rule: C3
+    # Intent: LIMIT
+    # Action: warn
+    # Ambiguous: False
+    allowed_hotelbookingcity := ["New York City (NYC)"]
+
+    allow_c3_limi := {"allow": true, "reason": "Clause C3: Limit - STRICT"} if {
+        allowed_hotelbookingcity[_] == input.hotelbookingcity
+    input.maximumhotelbookinglimitpernight <= 300
     }
 
 # Default: Allow if no violations

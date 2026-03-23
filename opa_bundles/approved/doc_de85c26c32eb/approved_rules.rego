@@ -18,6 +18,15 @@ package data.travel_policy
     }
 
 
+    # Rule: C3
+    # Intent: LIMIT
+    # Action: warn
+    # Ambiguous: False
+    allowed_hotelbookingcity := ["New York City (NYC)"]
+
+    allow_c3_limi := {"allow": true, "reason": "Clause C3: Limit - STRICT"} if {
+        allowed_hotelbookingcity[_] == input.hotelbookingcity
+    input.maximumhotelbookinglimitpernight <= 300
     # Rule: C2
     # Intent: ADVISORY
     # Action: warn

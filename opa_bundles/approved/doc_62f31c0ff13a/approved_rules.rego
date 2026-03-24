@@ -4,6 +4,12 @@ package data.travel_policy
 # All approved clauses included
 
 
+    # Rule: C3
+    # Intent: CONDITIONAL_ALLOWANCE
+    # Action: warn
+    # Ambiguous: False
+    allow_c3_cond := {"allow": true, "reason": "Clause C3: Conditional Allowance - CONDITIONAL"} if {
+        input.lastminutebookingthreshold <= 48
     # Rule: C2
     # Intent: ADVISORY
     # Action: warn

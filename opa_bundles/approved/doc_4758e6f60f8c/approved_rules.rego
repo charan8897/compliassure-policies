@@ -14,6 +14,12 @@ package data.travel_policy
     allow_c2_advi := {"allow": true, "reason": "Clause C2: Advisory - CONDITIONAL"} if {
         allowed_recommendedtransportmode[_] == input.recommendedtransportmode
                 allowed_enforcementlevel[_] == input.enforcementlevel
+    # Rule: C1
+    # Intent: CONDITIONAL_ALLOWANCE
+    # Action: warn
+    # Ambiguous: False
+    allow_c1_cond := {"allow": true, "reason": "Clause C1: Conditional Allowance - CONDITIONAL"} if {
+        input.minimumtravelduration > 6
     }
 
 # Default: Allow if no violations

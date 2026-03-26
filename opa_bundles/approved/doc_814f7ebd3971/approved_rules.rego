@@ -8,9 +8,26 @@ package data.travel_policy
     # Intent: CONDITIONAL_ALLOWANCE
     # Action: warn
     # Ambiguous: False
-    allow_c1_gen := {"allow": true, "reason": "Clause C1: CONDITIONAL_ALLOWANCE - EDITED"} if {
-        input.travelclassforinternationaltravel == "Business class"
-    input.internationaltraveldurationthreshold >= 8+ hours
+    allowed_travelclass := ["Business"]
+    allowed_traveltype := ["International"]
+
+    allow_c1_cond := {"allow": true, "reason": "Clause C1: Conditional Allowance - CONDITIONAL"} if {
+        allowed_travelclass[_] == input.travelclass
+                input.durationthreshold > 6
+                allowed_traveltype[_] == input.traveltype
+    }
+
+
+    # Rule: C2
+    # Intent: ADVISORY
+    # Action: warn
+    # Ambiguous: False
+    allowed_applicableunit := ["Sales"]
+    allowed_bufferpercentage := ["20"]
+
+    allow_c2_advi := {"allow": true, "reason": "Clause C2: Advisory - CONDITIONAL"} if {
+        allowed_applicableunit[_] == input.applicableunit
+                allowed_bufferpercentage[_] == input.bufferpercentage
     }
 
 # Default: Allow if no violations

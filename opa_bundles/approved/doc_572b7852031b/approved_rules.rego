@@ -14,6 +14,15 @@ package data.travel_policy
         allowed_policyid[_] == input.policyid
     }
 
+
+    # Rule: C10
+    # Intent: CONDITIONAL_ALLOWANCE
+    # Action: warn
+    # Ambiguous: False
+    allow_c10_cond := {"allow": true, "reason": "Clause C10: Conditional Allowance - CONDITIONAL"} if {
+        input.minimumoutofficeduration > 6
+    }
+
 # Default: Allow if no violations
 allow_default {
     true

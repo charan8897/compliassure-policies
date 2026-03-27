@@ -4,27 +4,21 @@ package data.travel_policy
 # All approved clauses included
 
 
-    # Rule: C1
+    # Rule: C3
     # Intent: CONDITIONAL_ALLOWANCE
     # Action: warn
     # Ambiguous: False
-    allow_c1_cond := {"allow": true, "reason": "Clause C1: Conditional Allowance - CONDITIONAL"} if {
-        input.internationaltraveldurationthreshold > 6
+    allow_c3_cond := {"allow": true, "reason": "Clause C3: Conditional Allowance - CONDITIONAL"} if {
+        true
     }
 
 
-    # Rule: C2
-    # Intent: ADVISORY
+    # Rule: C4
+    # Intent: RESTRICTION
     # Action: warn
     # Ambiguous: False
-    allowed_triporigin := ["London"]
-    allowed_tripdestination := ["Paris"]
-    allowed_routedirection := ["vice-versa"]
-
-    allow_c2_advi := {"allow": true, "reason": "Clause C2: Advisory - CONDITIONAL"} if {
-        allowed_triporigin[_] == input.triporigin
-                allowed_tripdestination[_] == input.tripdestination
-                allowed_routedirection[_] == input.routedirection
+    allow_c4_rest := {"allow": true, "reason": "Clause C4: Restriction - YES"} if {
+        input.latebookingthreshold <= 48
     }
 
 # Default: Allow if no violations

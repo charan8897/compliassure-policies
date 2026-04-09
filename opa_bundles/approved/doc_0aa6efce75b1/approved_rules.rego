@@ -9,7 +9,19 @@ package data.travel_policy
     # Action: warn
     # Ambiguous: False
     allow_c1_cond := {"allow": true, "reason": "Clause C1: Conditional Allowance - CONDITIONAL"} if {
-        input.minimumtravelduration > 6
+        input.minimumflightdurationforbusinessclass > 6
+    }
+
+
+    # Rule: C3
+    # Intent: RESTRICTION
+    # Action: warn
+    # Ambiguous: False
+    allowed_hotelcitycode := ["NYC"]
+
+    allow_c3_rest := {"allow": true, "reason": "Clause C3: Restriction - YES"} if {
+        allowed_hotelcitycode[_] == input.hotelcitycode
+                input.maximumhotelcostpernight > 300
     }
 
 # Default: Allow if no violations

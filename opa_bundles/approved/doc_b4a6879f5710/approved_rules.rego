@@ -51,6 +51,49 @@ warn if {
     [{"constraint": "travel.class_permitted", "operator": "APPROVED", "value": "CONDITIONAL"}]
 }
 
+package policy.ai.general.c2
+
+import future.keywords.if
+import future.keywords.in
+import future.keywords.every
+
+# Default: allow unless a deny rule fires
+default allow := true
+
+# ── Detection rules ───────────────────────────────
+# Pattern: check input.prompt (single string field)
+deny contains msg if {
+    input.suggestedtravelmode == "Train"
+    input.origincity == "London"
+    input.destinationcity == "Paris"
+    msg := "POLICY VIOLATION [C2]: Advisory — Action: EVALUATE."
+}
+
+# ── Final allow gate ──────────────────────────────
+allow if {
+    count(deny) == 0
+}
+
+# ── Audit metadata ────────────────────────────────
+audit := {
+    "policy"     : "policy.ai.general.c2",
+    "clause_id"  : "C2",
+    "intent"     : "ADVISORY",
+    "severity"   : "MEDIUM",
+    "enforcement": "WARN",
+    "description": "Policy clause C2: ADVISORY",
+    "timestamp"  : time.now_ns(),
+}
+
+# ── Warn action ────────────────────────────────
+allow if {
+    input.suggestedtravelmode == "Train"
+    input.origincity == "London"
+    input.destinationcity == "Paris"
+}
+
+warn := [{"constraint": "allowance.general", "operator": "APPROVED", "value": "CONDITIONAL"}]
+
 # Default: Allow if no violations
 allow_default {
     true
